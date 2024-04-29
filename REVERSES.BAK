@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#define MAX 100
+void exit(int status);
+int top=-1,item;
+char stack_string[MAX];
+void pushchar(char item);
+char popchar(void);
+int isEmpty(void);
+int isFull(void);
+int main()
+{
+char str[MAX];
+int i;
+clrscr();
+printf("input a string:");
+scanf("%s",str);
+for(i=0;i<strlen(str);i++)
+{
+pushchar(str[i]);
+}
+for(i=0;i<strlen(str);i++)
+{
+str[i]=popchar();
+}
+printf("reversed string is:%s",str);
+getch();
+return 0;
+}
+void pushchar(char item)
+{
+if(isFull())
+{
+printf("stack is full!!!");
+return;
+}
+top=top+1;
+stack_string[top]=item;
+}
+char popchar()
+{
+if(isEmpty())
+{
+printf("stack is Empty!!");
+return 0;
+}
+item=stack_string[top];
+top=top-1;
+return item;
+}
+int isEmpty()
+{
+if(top==-1)
+return 1;
+else
+return 0;
+}
+int isFull()
+{
+if(top==MAX-1)
+return 1;
+else
+return 0;
+}
